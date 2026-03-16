@@ -2,7 +2,7 @@ export type TDriverStatus = "AVAILABLE" | "ON_TRIP" | "OFFLINE";
 
 export type TVehicleType = "MOTORCYCLE" | "CAR";
 
-export interface TDriver {
+export interface IDriver {
     id: String,
     name: String,
     phoneNumber: String,
