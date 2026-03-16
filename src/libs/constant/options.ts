@@ -1,0 +1,2 @@
+export const DRIVER_STATUS_OPTION = ["AVAILABLE", "ON_TRIP", "OFFLINE"];
+export const VEHICLE_TYPE_OPTION = ["MOTORCYCLE", "CAR"];
