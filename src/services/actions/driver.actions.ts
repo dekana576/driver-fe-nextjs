@@ -1,65 +1,76 @@
 "use server";
 
-import { IDriver, ICreateDriverRequest, IUpdateDriverRequest} from "@/types/driver.types"
-import { AxiosInstanceWithoutAuth } from "../axios-instance";
-import { IBaseResponse } from "@/types/response.type";
+import {
+  IDriver,
+  ICreateDriverRequest,
+  IUpdateDriverRequest,
+} from "@/types/driver.types";
 
-export const getDriverList = async (search?:string) => {
-    try {
-        const response = await AxiosInstanceWithoutAuth<IBaseResponse<IDriver[]>>({
-            method: "GET",
-            url: "/drivers",
-            params: search ? {search} : {}
-        });
+import { IBaseResponse } from "@/types/response.types";
+import { AxiosInstanceWithoutAuth } from "../axios-intance";
 
-        return response.data;
-    } catch(error) {
-        throw error;
-    }
+export const getDriverList = async (search?: string) => {
+  try {
+    const response = await AxiosInstanceWithoutAuth<IBaseResponse<IDriver[]>>({
+      method: "GET",
+      url: "/drivers",
+      params: search ? { search } : {},
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export const getDriverByID = async (driverId:string) => {
-    try {
-        const response = await AxiosInstanceWithoutAuth<IBaseResponse<IDriver[]>>({
-            method: "GET",
-            url: `/drivers/${driverId}`
-        });
+export const getDriverById = async (driverId: string) => {
+  try {
+    const response = await AxiosInstanceWithoutAuth<IBaseResponse<IDriver>>({
+      method: "GET",
+      url: `/drivers/${driverId}`,
+    });
 
-        return response.data;
-    } catch(error) {
-        throw error;
-    }
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export const createDriver = async (body:ICreateDriverRequest) => {
-    try {
-        const response = await AxiosInstanceWithoutAuth<IBaseResponse<IDriver>>({
-            method: "POST",
-            url: `/drivers`,
-            data: body
-        });
+export const createDriver = async (body: ICreateDriverRequest) => {
+  try {
+    const response = await AxiosInstanceWithoutAuth<IBaseResponse<IDriver>>({
+      method: "POST",
+      url: "/drivers",
+      data: body,
+    });
 
-        return response.data;
-    } catch(error) {
-        throw error;
-    }
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export const updateDriver = async ({driverId, body}: {driverId:String, body:IUpdateDriverRequest  }) => {
+export const updateDriver = async ({
+  driverId,
+  body,
+}: {
+  driverId: string;
+  body: IUpdateDriverRequest;
+}) => {
     try {
         const response = await AxiosInstanceWithoutAuth<IBaseResponse<IDriver>>({
             method: "PUT",
             url: `/drivers/${driverId}`,
             data: body
-        })
+        });
 
         return response.data;
-    } catch (error) {
+    } catch(error) {
         throw error;
     }
 };
 
-export const deleteDriver = async (driverId: String) => {
+export const deleteDriver = async (driverId: string) => {
     try {
         const response = await AxiosInstanceWithoutAuth<IBaseResponse<IDriver>>({
             method: "DELETE",
@@ -67,7 +78,7 @@ export const deleteDriver = async (driverId: String) => {
         });
 
         return response.data;
-    } catch (error) {
+    } catch(error) {
         throw error;
     }
 };
