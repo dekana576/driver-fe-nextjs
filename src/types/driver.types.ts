@@ -3,26 +3,26 @@ export type TDriverStatus = "AVAILABLE" | "ON_TRIP" | "OFFLINE";
 export type TVehicleType = "MOTORCYCLE" | "CAR";
 
 export interface IDriver {
-  id: string;
-  name: string;
-  phoneNumber: string;
-  status: TDriverStatus;
-  vehicleType: TVehicleType;
-  plateNumber: string;
-  rating: number;
-  currentLocation: string;
-  createdAt: string;
-  updatedAt: string;
+    id: String,
+    name: String,
+    phoneNumber: String,
+    status: TDriverStatus,
+    vehicleType: TVehicleType,
+    plateNumber: String,
+    rating: Number,
+    currentLocaction: String,
+    createdAt: String,
+    updatedAt: String
 }
 
 export interface ICreateDriverRequest {
-  name: string;
-  phoneNumber: string;
-  status: TDriverStatus;
-  vehicleType: TVehicleType;
-  plateNumber: string;
-  rating: number;
-  currentLocation: string;
+    name: String,
+    phoneNumber: String,
+    status: TDriverStatus,
+    vehicleType: TVehicleType,
+    plateNumber: String,
+    rating: Number,
+    currentLocation: String
 }
 
 export interface IUpdateDriverRequest extends ICreateDriverRequest {}
